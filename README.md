@@ -6,7 +6,7 @@ diagram here: https://dbdiagram.io/d/603f931ffcdcb6230b226465
 In the file: 6 `Tietokannan suunnittelu - Tietokantojen perusteet kevät 2021.html` there are some resources on how to design
 a database, written in finnish.
 
-## Instructions for the assignment in finnish:
+## Instructions for the assignment, in finnish:
 
 ```
 Tehtäväsi on suunnitella tietokanta, jota voitaisiin käyttää verkkokaupan taustalla. Suunnittele tietokanta niin, että siihen voidaan tallentaa tietosisältö seuraavia toimintoja varten:
@@ -26,7 +26,7 @@ Suunnittele tietokanta luvun 6 periaatteiden mukaisesti ja esitä tietokannan ra
 
 ```
 
-## My explanations on how the system works in finnish
+## My explanations on how the system works, in finnish
 
 ```
 1. Tuotteet tallennetaan tietokannan tauluun Tuotteet. Jokaiselle tuotteelle määritellään sarakkeet id, nimi, kuvaus sekä hinta.
