@@ -1,0 +1,129 @@
+CREATE TABLE "Arvostelut" (
+	"id"	INTEGER,
+	"kayttaja_id"	INTEGER,
+	"tuote_id"	INTEGER,
+	"kommentti"	TEXT,
+	FOREIGN KEY("kayttaja_id") REFERENCES "Kayttajat"("id"),
+	FOREIGN KEY("tuote_id") REFERENCES "Tuotteet"("id"),
+	PRIMARY KEY("id")
+);
+
+CREATE TABLE "KayttajaTiedot" (
+	"id"	INTEGER,
+	"kayttaja_id"	INTEGER,
+	"osoite"	TEXT,
+	"pankkikortti"	BLOB,
+	PRIMARY KEY("id"),
+	FOREIGN KEY("kayttaja_id") REFERENCES "Kayttajat"("id")
+);
+
+CREATE TABLE "Kayttajat" (
+	"id"	INTEGER,
+	"nimi"	TEXT,
+	"ostoskori_id"	INTEGER,
+	"kayttaja_tiedot_id"	INTEGER,
+	FOREIGN KEY("ostoskori_id") REFERENCES "Ostoskorit"("id"),
+	FOREIGN KEY("kayttaja_tiedot_id") REFERENCES "KayttajaTiedot"("id"),
+	PRIMARY KEY("id")
+);
+
+CREATE TABLE "Kupongit" (
+	"id"	INTEGER,
+	"alennus"	INTEGER,
+	"kaytetty"	BOOLEAN,
+	PRIMARY KEY("id")
+);
+
+CREATE TABLE "OstoskoriTuote" (
+	"id"	INTEGER,
+	"ostoskori_id"	INTEGER,
+	"tuote_id"	INTEGER,
+	FOREIGN KEY("ostoskori_id") REFERENCES "Ostoskorit"("id"),
+	PRIMARY KEY("id")
+);
+
+CREATE TABLE "Ostoskorit" (
+	"id"	INTEGER,
+	"kayttaja_id"	INTEGER,
+	PRIMARY KEY("id"),
+	FOREIGN KEY("kayttaja_id") REFERENCES "Kayttajat"("id")
+);
+
+CREATE TABLE "Tarjoukset" (
+	"id"	INTEGER,
+	"hinta"	INTEGER,
+	PRIMARY KEY("id")
+);
+
+CREATE TABLE "TarjousTuote" (
+	"id"	INTEGER,
+	"tarjous_id"	INTEGER,
+	"tuote_id"	INTEGER,
+	FOREIGN KEY("tuote_id") REFERENCES "Tuotteet"("id"),
+	FOREIGN KEY("tarjous_id") REFERENCES "Tarjoukset"("id"),
+	PRIMARY KEY("id")
+);
+
+CREATE TABLE "Tilaukset" (
+	"id"	INTEGER,
+	"kayttaja_id"	INTEGER,
+	PRIMARY KEY("id"),
+	FOREIGN KEY("kayttaja_id") REFERENCES "Kayttajat"("id")
+);
+
+CREATE TABLE "TilausTuote" (
+	"id"	INTEGER,
+	"tuote_id"	INTEGER,
+	"tilaus_id"	INTEGER,
+	"tila"	TEXT,
+	PRIMARY KEY("id"),
+	FOREIGN KEY("tuote_id") REFERENCES "Tuotteet"("id"),
+	FOREIGN KEY("tilaus_id") REFERENCES "Tilaukset"("id")
+);
+
+CREATE TABLE "TuoteRyhma" (
+	"id"	INTEGER,
+	"nimi"	TEXT,
+	PRIMARY KEY("id")
+);
+
+CREATE TABLE "TuoteRyhmaus" (
+	"id"	INTEGER,
+	"tuote_id"	INTEGER,
+	"ryhma_id"	INTEGER,
+	FOREIGN KEY("ryhma_id") REFERENCES "TuoteRyhma"("id"),
+	FOREIGN KEY("tuote_id") REFERENCES "Ostoskorit"("id"),
+	PRIMARY KEY("id")
+);
+
+CREATE TABLE "TuoteSuositus" (
+	"id"	INTEGER,
+	"ostettu_tuote_id"	INTEGER,
+	"suositus_tuote_id"	INTEGER,
+	FOREIGN KEY("ostettu_tuote_id") REFERENCES "Tuotteet"("id"),
+	FOREIGN KEY("suositus_tuote_id") REFERENCES "Tuotteet"("id"),
+	PRIMARY KEY("id")
+);
+
+CREATE TABLE "Tuotteet" (
+	"id"	INTEGER,
+	"nimi"	TEXT,
+	"kuvaus"	TEXT,
+	"hinta"	INTEGER,
+	PRIMARY KEY("id")
+);
+
+CREATE TABLE "VarastoTuote" (
+	"id"	INTEGER,
+	"varasto_id"	INTEGER,
+	"tuote_id"	INTEGER,
+	FOREIGN KEY("varasto_id") REFERENCES "Varastot"("id"),
+	FOREIGN KEY("tuote_id") REFERENCES "Tuotteet"("id"),
+	PRIMARY KEY("id")
+);
+
+CREATE TABLE "Varastot" (
+	"id"	INTEGER,
+	"nimi"	TEXT,
+	PRIMARY KEY("id")
+);
