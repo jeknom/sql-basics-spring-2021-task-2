@@ -6,6 +6,8 @@ diagram here: https://dbdiagram.io/d/603f931ffcdcb6230b226465
 In the file: 6 `Tietokannan suunnittelu - Tietokantojen perusteet kevät 2021.html` there are some resources on how to design
 a database, written in finnish.
 
+Source of course material: https://tikape.mooc.fi/kevat-2021/
+
 ## Instructions for the assignment, in finnish:
 
 ```
